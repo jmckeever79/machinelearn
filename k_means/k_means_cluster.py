@@ -43,6 +43,11 @@ data_dict = pickle.load( open("../final_project/final_project_dataset.pkl", "r")
 ### there's an outlier--remove it! 
 data_dict.pop("TOTAL", 0)
 
+#not_nan = [x for x in data_dict.itervalues() if x['salary'] != 'NaN']
+#not_nan = sorted(not_nan, key=lambda x: x['salary'])
+
+#for k in not_nan:
+#    print(k['salary'])
 
 ### the input features we want to use 
 ### can be any key in the person-level dictionary (salary, director_fees, etc.) 
@@ -64,7 +69,11 @@ plt.show()
 
 ### cluster here; create predictions of the cluster labels
 ### for the data and store them to a list called pred
+from sklearn import cluster
 
+km = cluster.KMeans(n_clusters=2)
+km.fit(finance_features)
+pred = km.predict(finance_features)
 
 
 
