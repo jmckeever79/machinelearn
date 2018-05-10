@@ -58,6 +58,12 @@ features_list = [poi, feature_1, feature_2]
 data = featureFormat(data_dict, features_list )
 poi, finance_features = targetFeatureSplit( data )
 
+from sklearn import preprocessing as pp
+scaler1 = pp.MinMaxScaler()
+train1 = scaler1.fit(finance_features)
+
+scaled1 = train1.transform([200000,1000000])
+print(scaled1)
 
 ### in the "clustering with 3 features" part of the mini-project,
 ### you'll want to change this line to 
